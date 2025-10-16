@@ -12,17 +12,23 @@ end)
 
 local forbiddenGroups
 if success then
-	-- Modül kodunu loadstring ile çalıştır ve module'ı al
-	local loadedModule = loadstring(moduleCode)
+	-- Modül kodunu sadece al, çalıştırma
+	print("[RBX-group-banner] Fetched 'BannedGroupsModule' from github!")
+	forbiddenGroups = moduleCode  -- Burada modül kodu string olarak saklanır
+else
+	warn("[RBX-group-banner] Module could not be loaded from GitHub: " .. tostring(moduleCode))
+	return -- Script'i durdur
+end
+
+-- Eğer forbiddenGroups bir string ise (modül kodu), onu çalıştırmamız gerekiyor
+if type(forbiddenGroups) == "string" then
+	local loadedModule = loadstring(forbiddenGroups)
 	if loadedModule then
 		forbiddenGroups = loadedModule()
 	else
-		warn("Modül yüklenirken hata oluştu.")
-		return -- Script'i durdur, çünkü modül yok
+		warn("Modül kodu çalıştırılamadı.")
+		return
 	end
-else
-	warn("Modül GitHub'dan alınamadı: " .. tostring(moduleCode))
-	return -- Script'i durdur
 end
 
 -- Oyuncu kontrol fonksiyonu
