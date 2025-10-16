@@ -26,7 +26,7 @@ if type(forbiddenGroups) == "string" then
 	if loadedModule then
 		forbiddenGroups = loadedModule()
 	else
-		warn("Modül kodu çalıştırılamadı.")
+		warn("Module have a trouble when running.")
 		return
 	end
 end
@@ -46,7 +46,7 @@ local function checkPlayer(player)
 			end
 
 			-- Eğer oyuncu atlanmadıysa, oyundan atılacak demektir.
-			print(player.Name .. " adlı oyuncu yasaklı bir grupta (ID: " .. groupId .. ") olduğu için oyundan atılıyor.")
+			print(player.Name .. " named player in forbidden group (ID: " .. groupId .. ") They are now kicking.")
 
 			-- Oyuncuyu belirtilen sebeple oyundan at
 			player:Kick("Reason: " .. groupConfig.reason)
@@ -69,9 +69,9 @@ local function checkPlayer(player)
 				end)
 
 				if success then
-					print(player.Name .. " (UserId: " .. player.UserId .. ") başarıyla kalıcı olarak yasaklandı.")
+					print(player.Name .. " (UserId: " .. player.UserId .. ") has been banned!.")
 				else
-					warn("Kullanıcı yasaklanırken bir hata oluştu: " .. tostring(err))
+					warn("An error occurred while banning the user: " .. tostring(err))
 				end
 			end
 
@@ -106,5 +106,7 @@ while true do
 		end
 	end
 	
-	print("Periyodik kontrol tamamlandı. " .. #players .. " oyuncu kontrol edildi.")
+	print("Periodic check completed. " .. #players .. " player checked.")
 end
+
+print("")
