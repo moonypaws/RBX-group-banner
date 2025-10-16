@@ -25,7 +25,7 @@ This helps maintain a safe and fair environment in your Roblox experience by pre
    - make sure to enable: HTTPS requests, Load String Enabled
 
    *WARNING: LoadStringEnabled makes your game also vulneable for exploits!
-		NOTE: LoadStringEnabled is CANNOT run from cleints unless they use 3th party software (this counts as exploits); 
+		NOTE: LoadStringEnabled is CANNOT run from clients unless they use 3th party software (this counts as exploits); 
 		read roblox's documents for more information*
 
 3. **Publish and Test:**
