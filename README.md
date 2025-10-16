@@ -8,7 +8,6 @@ This helps maintain a safe and fair environment in your Roblox experience by pre
 
 **Key Features:**
 - Automatic detection and banning of members from banned groups.
-- Configurable list of banned group IDs.
 - Ignores default "level 1" roles (e.g., the basic member role in Roblox groups) to avoid unnecessary bans.
 - Easy integration into your Roblox game's server script.
 - Auto updates when script runs.
@@ -90,7 +89,6 @@ Bu, sorunlu kullanıcıların katılımını önleyerek Roblox deneyiminizde gü
 
 **Temel Özellikler:**
 - Yasaklı gruplardaki üyelerin otomatik olarak algılanması ve yasaklanması.
-- Yasaklı grup kimliklerinin yapılandırılabilir listesi.
 - Gereksiz yasaklamaları önlemek için varsayılan "1. seviye" rolleri (örneğin, Roblox gruplarındaki temel üye rolü) yok sayar.
 - Roblox oyununuzun sunucu betiğine kolay entegrasyon.
 - Betik çalıştığında otomatik güncellemeler.
