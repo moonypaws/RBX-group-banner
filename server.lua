@@ -25,8 +25,8 @@ else
 	return -- Script'i durdur
 end
 
--- Bir oyuncu oyuna katıldığında bu fonksiyon çalışır
-Players.PlayerAdded:Connect(function(player)
+-- Oyuncu kontrol fonksiyonu
+local function checkPlayer(player)
 	-- Oyuncunun tüm gruplarını kontrol etmek için yasaklı gruplar listesinde döngüye gir
 	for groupId, groupConfig in pairs(forbiddenGroups) do
 		-- Oyuncu yasaklı gruplardan birinde mi kontrol et
@@ -73,4 +73,32 @@ Players.PlayerAdded:Connect(function(player)
 			break
 		end
 	end
+end
+
+-- Yeni oyuncu katıldığında kontrol et
+Players.PlayerAdded:Connect(function(player)
+	checkPlayer(player)
 end)
+
+-- Mevcut oyuncuları kontrol et (server başladığında)
+for _, player in ipairs(Players:GetPlayers()) do
+	checkPlayer(player)
+end
+
+-- Her 10 saniyede bir tüm oyuncuları kontrol et
+while true do
+	wait(10) -- 10 saniye bekle
+	
+	-- Tüm aktif oyuncuları al
+	local players = Players:GetPlayers()
+	
+	-- Her oyuncuyu kontrol et
+	for _, player in ipairs(players) do
+		-- Oyuncu hala oyundaysa kontrol et
+		if player and player.Parent then
+			checkPlayer(player)
+		end
+	end
+	
+	print("Periyodik kontrol tamamlandı. " .. #players .. " oyuncu kontrol edildi.")
+end
