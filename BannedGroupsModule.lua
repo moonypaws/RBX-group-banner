@@ -29,11 +29,11 @@ local forbiddenGroups = {
 		banAscnAfterKick = true
 	},
 
-	--[[[34999790] = { --test
+	[34999790] = { --test
 		IgnoreRoleLevel1 = true,
 		reason = "Testing.",
 		banAscnAfterKick = true
-	},]]
+	},
 
 }
 
