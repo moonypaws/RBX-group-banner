@@ -18,7 +18,7 @@ This helps maintain a safe and fair environment in your Roblox experience by pre
 ## Installation
 
 1. **Clone or Download the Repository:**
-   - Coming soon to roblox's marketplace / roblox script model!
+   - Download from this repo.'s releases!
 
 2. **Add to Your Project:**
    - Place import script at Server script service
