@@ -16,7 +16,7 @@ if success then
 	print("[RBX-group-banner] Fetched 'BannedGroupsModule' from github!")
 	forbiddenGroups = moduleCode  -- Burada modül kodu string olarak saklanır
 else
-	warn("[RBX-group-banner] Module could not be loaded from GitHub: " .. tostring(moduleCode))
+	warn("[RBX-group-banner] Module could not be loaded from GitHub")
 	return -- Script'i durdur
 end
 
