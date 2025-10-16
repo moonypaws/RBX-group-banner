@@ -3,7 +3,7 @@ local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 
 -- GitHub RAW URL'sini buraya koy (modül script'in RAW linki)
-local moduleUrl = "https://raw.githubusercontent.com/KULLANICI_ADI/REPO_ADI/main/Anti_raid_module.lua" -- Örnek URL, gerçek URL ile değiştir
+local moduleUrl = "https://raw.githubusercontent.com/moonypaws/RBX-group-banner/refs/heads/main/BannedGroupsModule.lua"
 
 -- HTTP ile modül kodunu al
 local success, moduleCode = pcall(function()
