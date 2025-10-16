@@ -7,14 +7,4 @@ What is this does?
 # NOTES:
 - more explation soon, i am testing this to work...
 - join our [dc server](www.discord.gg/6TJJwcqXkg) to submit other bad groups too
-
-----------------
-# [🇹🇷] RBX-group-banner
-Bu ne işe yarar?
-
-- "/BannedGroupsModule.lua" adresindeki modül betiğinden kötü grup kimliklerini (örneğin dolandırıcılar veya grup sahibi gerçekten kötü biri/şüpheli biri vb.) çeker.
-- Bu gruba katılan biri: Roblox hizmetleri (roblox yasaklama API'si) aracılığıyla Roblox oyununuzdan yasaklanır.
-
-# NOTLAR:
-- Yakında daha fazla açıklama yapacağım, işe yarayıp yaramadığını test ediyorum...
-- Diğer kötü grupları da bildirmek için [dc sunucumuza](www.discord.gg/6TJJwcqXkg) katılın.
+- I want to be clear: I don't hate the group members there, there is level 1 ignore (the role given by default in Roblox groups)
