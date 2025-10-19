@@ -1,3 +1,8 @@
+local GeneralConfig = {
+	versionName = "0.1",
+	versionCode = "Stable"
+}
+
 -- Gerekli servisleri dahil et
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
@@ -109,4 +114,9 @@ while true do
 	print("Periodic check completed. " .. #players .. " player checked.")
 end
 
-print("")
+print([[
+	RBX-group-banner server has been loaded!
+]])
+
+print("Version: " .. GeneralConfig.versionName)
+print("Code: " .. GeneralConfig.versionCode)
