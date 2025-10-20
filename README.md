@@ -80,51 +80,54 @@ We welcome contributions to expand the list of banned groups or improve the scri
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# [TÜRKÇE] RBX Grup Yasaklayıcı
+# [TÜRKÇE] RBX Group Ban Script
 
 ## Genel Bakış
 
-RBX Grup Yasaklayıcı'ı, belirli "kötü" grupların üyesi olan kullanıcıları oyununuzdan otomatik olarak yasaklamak için tasarlanmış bir Roblox sunucu tarafı betiğidir. Bu gruplar dolandırıcılar, istismarcılar veya şüpheli kişilere ait grupları içerebilir. Betik, grup kimliklerini bir modül betiğinden (`BannedGroupsModule.lua`) alır ve oyuncu katılımında yasaklamaları uygulamak için Roblox'un resmi yasaklama API'sini kullanır.
+RBX Group Ban Script, Roblox sunucu tarafı bir betiğidir ve belirtilen "kötü" grupların üyelerini oyununuzdan otomatik olarak yasaklamak için tasarlanmıştır. Bu gruplar dolandırıcılar, exploit kullanıcıları veya şüpheli bireylere ait olan grupları içerebilir. Script, grup ID'lerini bir modül betiğinden (`BannedGroupsModule.lua`) çeker ve oyuncunun katılımı sırasında Roblox'un resmi ban API'sini kullanarak yasakları uygular.
 
-Bu, sorunlu kullanıcıların katılımını önleyerek Roblox deneyiminizde güvenli ve adil bir ortam sağlamanıza yardımcı olur.
+Bu, Roblox deneyiminizde sorunlu kullanıcıların katılımını engelleyerek güvenli ve adil bir ortamı korumanıza yardımcı olur.
 
-**Temel Özellikler:**
-- Yasaklı gruplardaki üyelerin otomatik olarak algılanması ve yasaklanması.
-- Yasaklı grup kimliklerinin yapılandırılabilir listesi.
-- Gereksiz yasaklamaları önlemek için varsayılan "1. seviye" rolleri (örneğin, Roblox gruplarındaki temel üye rolü) yok sayar.
+**Ana Özellikler:**
+- Yasaklanmış grupların üyelerinin otomatik algılanması ve yasaklanması.
+- Yapılandırılabilir yasaklanmış grup ID'leri listesi.
+- Varsayılan "seviye 1" rolleri (örneğin, Roblox gruplarındaki temel üye rolü) görmezden gelerek gereksiz yasakları önler.
 - Roblox oyununuzun sunucu betiğine kolay entegrasyon.
-- Betik çalıştığında otomatik güncellemeler.
+- Script çalıştığında otomatik güncelleme.
 
-**Not:** Bu betik, grup üyelerini ayrım gözetmeksizin hedef almaz veya onlardan nefret etmez; oyununuzu bilinen kötü niyetli kişilerden korumaya odaklanır.
+**Not:** Bu script, grup üyelerine ayrımcılık yapmaz veya nefret etmez; yalnızca bilinen kötü kişilerden oyununuzu korumaya odaklanır.
 
 ## Kurulum
 
 1. **Depoyu Klonlayın veya İndirin:**
-- Yakında Roblox'un pazar yerinde/Roblox betik modelinde!
+   - Bu repo'nun yayınlarından indirin!
 
-2. **Projenize Ekleyin:**
-- İçe aktarma betiğini Sunucu betik hizmetine yerleştirin
-- Şunları etkinleştirdiğinizden emin olun: HTTPS istekleri, Yükleme Dizesi Etkin
+2. **Projeye Ekleyin:**
+   - Import betiğini Server Script Service'e yerleştirin
+   - Şu ayarları etkinleştirin: HTTPS istekleri, Load String Enabled
 
-*UYARI: LoadStringEnabled, oyununuzu istismarlara karşı da savunmasız hale getirir!
-NOT: LoadStringEnabled, üçüncü taraf yazılım kullanmadıkları sürece istemciler tarafından ÇALIŞTIRILAMAZ (bu istismar olarak sayılır);
-Daha fazla bilgi için Roblox belgelerini okuyun*
+   *UYARI: LoadStringEnabled oyununuzu exploit'lere karşı da savunmasız hale getirir!
+		NOT: LoadStringEnabled istemcilerden ÜÇÜNCÜ PARTİ YAZILIM kullanmadıkça çalıştırılamaz (bu exploit sayılır); 
+		daha fazla bilgi için Roblox belgelerini okuyun*
 
-3. **Yayınla ve Test Et:**
-- Yerinizi Roblox'ta yayınlayın ve canlı bir sunucuda test edin.
+3. **Yayınlayın ve Test Edin:**
+   - Yerleşiminizi Roblox'a yayınlayın ve canlı sunucuda test edin.
 
 ## Kullanım
 
-- Betik, `Players.PlayerAdded` aracılığıyla oyuncu katıldığında otomatik olarak çalışır. - Katılan bir oyuncu yasaklı bir gruptaysa (varsayılan rolün dışında), Roblox'un `Players:BanAsync(banConfig)` metodu kullanılarak yasaklanır.
+- Script, `Players.PlayerAdded` aracılığıyla oyuncu katılımında otomatik olarak çalışır.
+- Katılan oyuncu yasaklanmış bir gruptaysa (varsayılan rolün ötesinde), Roblox'un `Players:BanAsync(banConfig)` yöntemiyle yasaklanır.
 
-### `BannedGroupsModule.lua`da Örnek Yapılandırma
+### `BannedGroupsModule.lua` İçinde Örnek Yapılandırma
 
 ```lua
 local forbiddenGroups = {
-  [123123123] = { -- Örnek Grup
-  IgnoreRoleLevel1 = true, -- farkında olmadan katılmış olabilecek masum üyelerin yasaklanmasını önler. reason = "Bu grup/topluluğun karanlık bir geçmişi veya şüpheli geliştiricileri var.",
-  banAscnAfterKick = true -- kullanıcıyı Roblox yasaklama API'si ile yasaklar
-}
+	[123123123] = { -- Örnek Grup
+		IgnoreRoleLevel1 = true, -- Bilmeden katılmış masum üyelerin yasaklanmasını önler.
+		reason = "Bu grup/topluluk karanlık bir geçmişe sahip veya şüpheli geliştiricilere aittir.",
+		banAscnAfterKick = true -- Kullanıcıyı Roblox ban API'si ile yasaklar
+	}
+
   --(Diğer gruplar)
 }
 
@@ -133,26 +136,26 @@ return bannedGroups
 
 ### Gösterim
 
-İşte test sırasında betiğin nasıl çalıştığını gösteren bazı ekran görüntüleri:
+Test sırasında script'in çalıştığını gösteren ekran görüntüleri:
 
 ![Ekran Görüntüsü 1: Oyuncu Katılım Algılama](https://github.com/moonypaws/RBX-group-banner/blob/496154042c98e808487d97dfb72d6fc045ca0753/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-10-16%20233349.png)
-*Başlık: Yasaklanmış bir gruptan katılan bir oyuncunun algılanması grup.*
+*Başlık: Yasaklanmış gruptan katılan oyuncunun algılanması.*
 
-![Ekran Görüntüsü 2: Yasaklama Uygulaması](https://github.com/moonypaws/RBX-group-banner/blob/496154042c98e808487d97dfb72d6fc045ca0753/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-10-16%20233503.png)
-*Başlık: Roblox API'si kullanılarak yasaklama uygulanıyor.*
+![Ekran Görüntüsü 2: Ban Uygulama](https://github.com/moonypaws/RBX-group-banner/blob/496154042c98e808487d97dfb72d6fc045ca0753/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-10-16%20233503.png)
+*Başlık: Roblox API'si ile ban uygulanması.*
 
-![Ekran Görüntüsü 3: Oyuncu, yeniden katıl](https://github.com/moonypaws/RBX-group-banner/blob/496154042c98e808487d97dfb72d6fc045ca0753/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-10-16%20233534.png)
+![Ekran Görüntüsü 3: Oyuncu Tekrar Katılmaya Çalışıyor](https://github.com/moonypaws/RBX-group-banner/blob/496154042c98e808487d97dfb72d6fc045ca0753/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-10-16%20233534.png)
 *Başlık: Oyuncu yasaklandı!.*
 
-## Katkıda Bulunanlar
+## Katkı Sağlama
 
-Yasaklı grupların listesini genişletmek veya senaryoyu geliştirmek için katkılarınızı bekliyoruz!
+Yasaklanmış gruplar listesini genişletmek veya script'i iyileştirmek için katkılarınızı bekliyoruz!
 
-- **Kötü Grupları Gönderin:** Yeni grup kimlikleri önermek için [Discord sunucumuza](https://www.discord.gg/6TJJwcqXkg) katılın. İncelenmek üzere kanıt (örneğin, raporlara veya olaylara bağlantılar) sağlayın.
-- **Sorunlar:** Hataları veya özellik taleplerini GitHub Sorunları aracılığıyla bildirin.
+- **Kötü Grupları Bildirin:** Yeni grup ID'leri önermek için [Discord sunucumuza](https://www.discord.gg/6TJJwcqXkg) katılın. İnceleme için kanıt sağlayın (örneğin, rapor veya olay bağlantıları).
+- **Sorunlar:** Hataları veya özellik isteklerini GitHub Issues aracılığıyla bildirin.
 
 ## Notlar
 
-- Bu betik hala test aşamasındadır; daha detaylı açıklamalar ve özellikler yakında eklenecektir.
-- Ban API'lerini kullanırken Roblox Hizmet Şartları'na uyduğunuzdan emin olun.
-- "Seviye 1" rolleri için varsayılan yoksayma özelliği, farkında olmadan katılmış olabilecek masum üyelerin yasaklanmasını engeller.
+- Bu script hala test aşamasındadır—daha detaylı açıklamalar ve özellikler yakında eklenecek.
+- Ban API'lerini kullanırken Roblox'un Hizmet Şartlarına uyduğunuzdan emin olun.
+- Varsayılan "seviye 1" rolleri görmezden gelme özelliği, bilmeden katılmış masum üyelerin yasaklanmasını önler.
